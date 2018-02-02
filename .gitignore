@@ -3,3 +3,5 @@
 /.terraform
 terraform.tfstate.backup
 terraform.tfstate
+# Put region, keyname, cred path in this secret file
+terraform.tfvars

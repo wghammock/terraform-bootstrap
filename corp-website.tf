@@ -16,27 +16,9 @@ resource "aws_default_vpc" "default" {
     }
 }
 
-resource "aws_subnet" "example" {
-  vpc_id            = "${data.aws_vpc.selected.id}"
-  availability_zone = "${var.vpc_id}"
-  cidr_block        = "${cidrsubnet(data.aws_vpc.selected.cidr_block, 4, 1)}"
-}
-
-# ===================================================
-
-# Network : Create a VPC to launch our instances into
-# cost about $40 per month with no usage
-
-# data "aws_vpc" "selected" {
-#  id = "${var.vpc_id}"
-# }
-
-# Create an vpc subnet to give our subnet access to the outside world
-
-# resource "aws_subnet" "example" {
-#  vpc_id            = "${data.aws_vpc.selected.id}"
-#  availability_zone = "us-west-2a"
-  cidr_block        = "${cidrsubnet(data.aws_vpc.selected.cidr_block, 4, 1)}"
+# Retrieve the AZ where we want to create network resources
+data "aws_availability_zone" "corporate-website" {
+  name = "${var.availability_zone}"
 }
 
 # ===================================================

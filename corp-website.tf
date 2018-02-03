@@ -1,6 +1,6 @@
 # Usage
-# terraform plan -var-file=terraform.tfvars -var-file=varibles.tf
-# terraform apply -var-file=terraform.tfvars -var-file=varibles.tf
+# terraform plan -var-file=terraform.tfvars -var-file=variables.tf
+# terraform apply -var-file=terraform.tfvars -var-file=variables.tf
 
 # Specify the provider and access details
 provider "aws" {
@@ -12,7 +12,7 @@ provider "aws" {
 # FREE TIER
 # ===================================================
 
-# make and download this file pre-hand
+# make and download this file pre-hand place in tfvars file
 keypair_name = "${var.sshkey}"
 
 resource "aws_default_vpc" "default" {

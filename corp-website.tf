@@ -1,12 +1,19 @@
+# Usage
+# terraform plan -var-file=terraform.tfvars -var-file=varibles.tf
+# terraform apply -var-file=terraform.tfvars -var-file=varibles.tf
+
 # Specify the provider and access details
 provider "aws" {
 	region 						= "${var.region}"
-	shared_credentials_file 	= "/.aws/credentials"
+	shared_credentials_file 	= "${var.shared_creds}"
 }
 
 
 # FREE TIER
 # ===================================================
+
+# make and download this file pre-hand
+keypair_name = "${var.sshkey}"
 
 resource "aws_default_vpc" "default" {
 	tags {
@@ -16,7 +23,7 @@ resource "aws_default_vpc" "default" {
 
 # Retrieve the AZ where we want to create network resources
 data "aws_availability_zone" "corporate-website" {
-	name = "${var.availability_zone}"
+	name = "${var.az}"
 }
 
 # ===================================================
